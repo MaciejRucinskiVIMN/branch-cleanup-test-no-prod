@@ -1,0 +1,1 @@
+Stabilise flaky checkout test
