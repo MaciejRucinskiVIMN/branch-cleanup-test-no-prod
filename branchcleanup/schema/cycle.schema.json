@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paramount-streaming.github.io/quality-engineering-test/branch-cleanup/cycle.schema.json",
+  "title": "Branch cleanup cycle",
+  "description": "Cycle-level metadata for one stale branch and pull request cleanup run. Exactly one instance per cycle, stored at cycles/<cycle_id>/cycle.json on the branch-cleanup-state branch.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "cycle_id",
+    "repo",
+    "state",
+    "dry_run",
+    "opened_at",
+    "voting_closes_at",
+    "finalized_at",
+    "criteria",
+    "candidate_count",
+    "skipped"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "Incremented only on a breaking change. Readers must refuse a version they do not know rather than best-effort parse it.",
+      "const": 1
+    },
+    "cycle_id": {
+      "description": "ISO date of Day 0. Sortable, and unambiguous if a cycle is re-run within one quarter.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "repo": {
+      "description": "owner/name of the repository this cycle scanned. The store is self-contained per repo; this field exists so a record read in isolation is unambiguous.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$"
+    },
+    "state": {
+      "description": "Lifecycle position of the cycle. Makes the scheduled finalization in PLGQEES-2893 idempotent: a re-run against a finalized cycle is a no-op rather than a second deletion pass.",
+      "enum": ["scanning", "voting", "finalized", "aborted"]
+    },
+    "dry_run": {
+      "description": "True for the report-only cycles in the PLGQEES-2822 rollout. Finalization must refuse to delete or rename when true. Without this, pilot cycles are indistinguishable from real ones in the history.",
+      "type": "boolean"
+    },
+    "opened_at": { "type": "string", "format": "date-time" },
+    "voting_closes_at": {
+      "description": "End of the voting window. Day 7 finalization runs at or after this instant.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "finalized_at": { "type": ["string", "null"], "format": "date-time" },
+    "criteria": { "$ref": "#/$defs/criteria" },
+    "jira_issue_key": {
+      "description": "Key of the per-cycle ticket created by PLGQEES-2891. Null until that step runs.",
+      "type": ["string", "null"],
+      "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$"
+    },
+    "slack_channel": { "type": ["string", "null"], "pattern": "^C[A-Z0-9]{8,}$" },
+    "slack_thread_ts": {
+      "description": "Timestamp id of the Day 0 Slack thread, used by PLGQEES-2892 to update messages in place.",
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{10}\\.[0-9]{6}$"
+    },
+    "candidate_count": {
+      "description": "Number of records under cycles/<cycle_id>/branches/. Lets a reader detect a truncated or partially written cycle without walking the tree.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "skipped": { "$ref": "#/$defs/skipped" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "state": { "const": "finalized" } }, "required": ["state"] },
+      "then": { "properties": { "finalized_at": { "type": "string" } } }
+    },
+    {
+      "if": {
+        "properties": { "state": { "enum": ["scanning", "voting"] } },
+        "required": ["state"]
+      },
+      "then": { "properties": { "finalized_at": { "type": "null" } } }
+    }
+  ],
+  "$defs": {
+    "branchNameList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "criteria": {
+      "description": "The thresholds actually applied by this cycle's scan, recorded rather than implied so that 'why was this a candidate' does not depend on what the workflow config happened to be that quarter.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch_stale_after_days",
+        "pr_stale_after_days",
+        "exempt_prefixes",
+        "skip_protected",
+        "include_draft_prs"
+      ],
+      "properties": {
+        "branch_stale_after_days": { "type": "integer", "minimum": 1 },
+        "pr_stale_after_days": {
+          "description": "Days without commits, comments, or reviews before an open PR is itself a candidate. Replaces the blanket open-PR exclusion in the original PLGQEES-2890 scope.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "exempt_prefixes": {
+          "description": "Ref prefixes skipped before staleness is computed. Each must end in a slash so that 'archive/' cannot match a branch named 'archived-experiment'.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "/$" }
+        },
+        "skip_protected": {
+          "description": "Skip refs carrying a ruleset deletion rule. This is what keeps main and branch-cleanup-state out of the candidate set without a hardcoded exception.",
+          "type": "boolean"
+        },
+        "include_draft_prs": { "type": "boolean" }
+      }
+    },
+    "skipped": {
+      "description": "Branch names excluded before candidacy, by reason. Names only, not records: cheap to store, and enough to answer 'was my branch even considered'.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exempt_prefix", "protected", "active_pr"],
+      "properties": {
+        "exempt_prefix": { "$ref": "#/$defs/branchNameList" },
+        "protected": { "$ref": "#/$defs/branchNameList" },
+        "active_pr": { "$ref": "#/$defs/branchNameList" }
+      }
+    }
+  }
+}

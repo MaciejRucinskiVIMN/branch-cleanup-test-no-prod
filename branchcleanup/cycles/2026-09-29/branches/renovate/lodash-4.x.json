@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "branch": "renovate/lodash-4.x",
+  "creator": "renovate[bot]",
+  "last_commit_sha": "5520218e0f4f20ce96ff583959eb74aea8339748",
+  "last_commit_at": "2026-05-11T03:02:18Z",
+  "candidate_reasons": ["stale_branch"],
+  "pull_request": null,
+  "decision": "undecided",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

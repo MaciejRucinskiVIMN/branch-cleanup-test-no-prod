@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paramount-streaming.github.io/quality-engineering-test/branch-cleanup/record.schema.json",
+  "title": "Branch cleanup candidate record",
+  "description": "One candidate branch in one cycle, stored at cycles/<cycle_id>/branches/<branch>.json on the branch-cleanup-state branch. A stale pull request is not a separate record type: it is a candidate branch that additionally carries a pull_request block, because every action the workflow takes (rename to archive/, or delete) acts on the branch either way.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "branch",
+    "creator",
+    "last_commit_sha",
+    "last_commit_at",
+    "candidate_reasons",
+    "pull_request",
+    "decision",
+    "decision_source",
+    "decided_at",
+    "decided_by",
+    "outcome",
+    "archived_as",
+    "deleted_at",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "branch": {
+      "description": "Ref name at scan time, without refs/heads/. Never starts with an exempt prefix: such refs are skipped before candidacy and appear only in the cycle's skipped list. Stored as well as encoded in the file path so a record is self-describing when read alone.",
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "^archive/" }
+    },
+    "creator": {
+      "description": "GitHub login of the last commit's author, used by PLGQEES-2892 to group the Slack thread. Bot suffixes are permitted because renovate and dependabot own branches in this repo.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}(\\[bot\\])?$"
+    },
+    "last_commit_sha": {
+      "description": "The restore key. The entire delete-and-restore-by-SHA model validated in PLGQEES-2888 rests on this one field, which is why it is required on every record regardless of lifecycle state.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "last_commit_at": { "type": "string", "format": "date-time" },
+    "candidate_reasons": {
+      "description": "Why this branch entered the cycle. Both reasons can apply at once: a branch with no commits for 90 days backing a PR with no review activity for 90 days.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["stale_branch", "stale_pr"] }
+    },
+    "pull_request": {
+      "description": "Present when an open PR exists on this branch at scan time, null otherwise.",
+      "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/pullRequest" }]
+    },
+    "decision": {
+      "description": "What the owner chose. Defaults to undecided at scan time.",
+      "enum": ["keep", "delete", "undecided"]
+    },
+    "decision_source": {
+      "description": "How the decision was reached. This is the field that makes the audit trail honest: silence-equals-delete produces the same decision value as a deliberate Delete click, and only this field distinguishes them afterwards. PLGQEES-2893's summary must report the two counts separately.",
+      "enum": ["slack", "manual", "timeout", null]
+    },
+    "decided_at": { "type": ["string", "null"], "format": "date-time" },
+    "decided_by": {
+      "description": "GitHub login of whoever clicked. Null when the decision came from the voting window expiring.",
+      "type": ["string", "null"],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}(\\[bot\\])?$"
+    },
+    "outcome": {
+      "description": "What physically happened, held separate from decision because a decision can fail to execute: a rename collision, or the owner deleting the branch mid-cycle. Collapsing the two would make a failed deletion indistinguishable from a successful one.",
+      "enum": ["pending", "archived", "deleted", "skipped"]
+    },
+    "archived_as": {
+      "description": "New ref name after a Keep vote renamed the branch. Required because the record is keyed by the original name and that ref no longer exists.",
+      "type": ["string", "null"],
+      "pattern": "^archive/.+"
+    },
+    "deleted_at": { "type": ["string", "null"], "format": "date-time" },
+    "notes": {
+      "description": "Free text. Mandatory when outcome is skipped, so an unexecuted decision always carries its reason.",
+      "type": ["string", "null"]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "decision": { "const": "undecided" } }, "required": ["decision"] },
+      "then": {
+        "properties": {
+          "decision_source": { "type": "null" },
+          "decided_at": { "type": "null" },
+          "decided_by": { "type": "null" },
+          "outcome": { "const": "pending" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "decision": { "enum": ["keep", "delete"] } },
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "decision_source": { "enum": ["slack", "manual", "timeout"] },
+          "decided_at": { "type": "string" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "decision_source": { "const": "timeout" } },
+        "required": ["decision_source"]
+      },
+      "then": {
+        "properties": {
+          "decision": { "const": "delete" },
+          "decided_by": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "decision_source": { "enum": ["slack", "manual"] } },
+        "required": ["decision_source"]
+      },
+      "then": { "properties": { "decided_by": { "type": "string" } } }
+    },
+    {
+      "if": { "properties": { "outcome": { "const": "archived" } }, "required": ["outcome"] },
+      "then": {
+        "properties": {
+          "decision": { "const": "keep" },
+          "archived_as": { "type": "string" },
+          "deleted_at": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "outcome": { "const": "deleted" } }, "required": ["outcome"] },
+      "then": {
+        "properties": {
+          "decision": { "const": "delete" },
+          "deleted_at": { "type": "string" },
+          "archived_as": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "outcome": { "const": "pending" } }, "required": ["outcome"] },
+      "then": {
+        "properties": {
+          "archived_as": { "type": "null" },
+          "deleted_at": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "outcome": { "const": "skipped" } }, "required": ["outcome"] },
+      "then": { "properties": { "notes": { "type": "string", "minLength": 1 } } }
+    },
+    {
+      "if": {
+        "properties": { "candidate_reasons": { "contains": { "const": "stale_pr" } } },
+        "required": ["candidate_reasons"]
+      },
+      "then": { "properties": { "pull_request": { "type": "object" } } }
+    },
+    {
+      "if": {
+        "allOf": [
+          { "properties": { "outcome": { "const": "deleted" } }, "required": ["outcome"] },
+          { "properties": { "pull_request": { "type": "object" } }, "required": ["pull_request"] }
+        ]
+      },
+      "then": {
+        "properties": {
+          "pull_request": { "properties": { "closed_at": { "type": "string" } } }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "pullRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "title", "url", "draft", "base", "last_activity_at", "closed_at"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "draft": { "type": "boolean" },
+        "base": { "type": "string", "minLength": 1 },
+        "last_activity_at": {
+          "description": "Most recent of: head commit, comment, review, or state change. This is what pr_stale_after_days is measured against.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "closed_at": {
+          "description": "Set by finalization when it closes a stale PR ahead of deleting the branch. A closed PR keeps refs/pull/<number>/head indefinitely, so PR-backed candidates are strictly more recoverable than bare branches.",
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
