@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "spike/graphql-gateway",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "fd1d67b55cbae60fb234d8bd555d4d55e7ed23f4",
+  "last_commit_at": "2026-07-21T08:41:57Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 2,
+    "title": "Spike: GraphQL gateway in front of the catalogue service",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/2",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-09-29T10:26:40Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

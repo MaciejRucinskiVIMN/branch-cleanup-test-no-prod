@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "feature/abandoned-login-refactor",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "8a8b781707c8d87bf799ad06ecfd1c4dc119476b",
+  "last_commit_at": "2026-03-14T10:22:31Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

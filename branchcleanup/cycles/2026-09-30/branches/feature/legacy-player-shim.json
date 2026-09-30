@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "feature/legacy-player-shim",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "aae3bd10f5a6596f845d3dbdf92d85c53e5c0514",
+  "last_commit_at": "2026-02-20T11:37:45Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 3,
+    "title": "Legacy player shim for pre-2024 clients",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/3",
+    "draft": true,
+    "base": "main",
+    "last_activity_at": "2026-09-29T10:26:43Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}
