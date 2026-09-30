@@ -8,12 +8,12 @@
     "stale_branch"
   ],
   "pull_request": null,
-  "decision": "delete",
-  "decision_source": null,
-  "decided_at": null,
+  "decision": "keep",
+  "decision_source": "slack",
+  "decided_at": "2026-09-30T15:38:05Z",
   "decided_by": null,
   "outcome": "pending",
   "archived_as": null,
   "deleted_at": null,
-  "notes": null
+  "notes": "Vote: archive/keep (via Slack)"
 }
