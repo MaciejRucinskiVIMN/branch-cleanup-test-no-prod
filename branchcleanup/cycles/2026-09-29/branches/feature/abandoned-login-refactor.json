@@ -9,11 +9,11 @@
   ],
   "pull_request": null,
   "decision": "delete",
-  "decision_source": "slack",
-  "decided_at": "2026-09-23T15:24:59Z",
+  "decision_source": null,
+  "decided_at": null,
   "decided_by": null,
   "outcome": "pending",
   "archived_as": null,
   "deleted_at": null,
-  "notes": "Vote: delete branch (via Slack)"
+  "notes": null
 }
