@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "cycle_id": "2026-10-01",
+  "repo": "MaciejRucinskiVIMN/branch-cleanup-test-no-prod",
+  "state": "voting",
+  "dry_run": false,
+  "opened_at": "2026-10-01T14:04:03Z",
+  "voting_closes_at": "2026-10-08T14:04:03Z",
+  "finalized_at": null,
+  "criteria": {
+    "branch_stale_after_days": 1,
+    "pr_stale_after_days": 1,
+    "exempt_prefixes": [
+      "archive/"
+    ],
+    "skip_protected": true,
+    "include_draft_prs": true
+  },
+  "jira_issue_key": null,
+  "slack_channel": null,
+  "slack_thread_ts": null,
+  "candidate_count": 9,
+  "skipped": {
+    "exempt_prefix": [
+      "archive/old-experiment"
+    ],
+    "protected": [],
+    "active_pr": [
+      "bugfix/flaky-checkout-test",
+      "feature/legacy-player-shim",
+      "feature/recently-active",
+      "spike/graphql-gateway"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "feature/recently-active",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "022d47fcbd5a9a8e840f33cc77d74678e82da5b6",
+  "last_commit_at": "2026-09-27T09:15:00Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 4,
+    "title": "Rework primary navigation",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/4",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-09-29T10:26:46Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

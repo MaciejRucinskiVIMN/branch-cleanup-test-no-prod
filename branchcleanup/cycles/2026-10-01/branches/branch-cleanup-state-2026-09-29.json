@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "branch-cleanup-state-2026-09-29",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "0a64d78a0c27733aa87f94c0dd4c9686b1504696",
+  "last_commit_at": "2026-09-30T12:55:45Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

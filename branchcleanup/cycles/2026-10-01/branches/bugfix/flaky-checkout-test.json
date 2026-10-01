@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "bugfix/flaky-checkout-test",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "02913f16425e292a37e458d28d410c516a0d21bf",
+  "last_commit_at": "2026-04-02T14:05:12Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 1,
+    "title": "Stabilise the flaky checkout spec",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/1",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-09-29T10:26:37Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}
