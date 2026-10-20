@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/delete-silence-pr",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "2934f8bfd277965f88a8fa2cf220c8bbc1df61e7",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 10,
+    "title": "fixture PR",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/10",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-10-20T00:00:00Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

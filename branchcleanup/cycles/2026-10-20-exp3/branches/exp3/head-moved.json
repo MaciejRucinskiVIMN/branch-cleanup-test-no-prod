@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/head-moved",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "4e2cff07d53518ac02ca91e58f8a54910396ba12",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": "Vote: delete (via Slack)"
+}

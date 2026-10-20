@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/delete-with-pr",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "14868f1e43c4858482c02c9b4edb9cfbaf75cdc8",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 9,
+    "title": "fixture PR",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/9",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-10-20T00:00:00Z",
+    "closed_at": null
+  },
+  "decision": "delete",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": "Vote: delete (via Slack)"
+}
