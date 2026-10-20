@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/delete-voted",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "56be3bfb90412a9ecef6a3d2c62f6458f6c46b70",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "deleted",
+  "archived_as": null,
+  "deleted_at": "2026-10-20T08:44:27Z",
+  "notes": "Deleted at 56be3bfb90412a9ecef6a3d2c62f6458f6c46b70. Restore: git push origin 56be3bfb90412a9ecef6a3d2c62f6458f6c46b70:refs/heads/exp3/delete-voted"
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/keep-with-pr",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "a31a968a41003ead3e8b17f7955e5885aa077a73",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 8,
+    "title": "fixture PR",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/8",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-10-20T00:00:00Z",
+    "closed_at": null
+  },
+  "decision": "keep",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "archived",
+  "archived_as": "archive/exp3/keep-with-pr",
+  "deleted_at": null,
+  "notes": "Kept by vote; renamed to archive/exp3/keep-with-pr."
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "cycle_id": "2026-10-20-exp3",
+  "repo": "MaciejRucinskiVIMN/branch-cleanup-test-no-prod",
+  "state": "finalized",
+  "dry_run": false,
+  "opened_at": "2026-10-13T08:00:00Z",
+  "voting_closes_at": "2026-10-20T08:00:00Z",
+  "finalized_at": "2026-10-20T08:44:27Z",
+  "criteria": {
+    "branch_stale_after_days": 1,
+    "pr_stale_after_days": 1,
+    "exempt_prefixes": [
+      "archive/"
+    ],
+    "skip_protected": true,
+    "include_draft_prs": true
+  },
+  "jira_issue_key": null,
+  "slack_channel": null,
+  "slack_thread_ts": null,
+  "candidate_count": 9,
+  "skipped": {
+    "exempt_prefix": [
+      "archive/old-experiment"
+    ],
+    "protected": [],
+    "active_pr": []
+  }
+}

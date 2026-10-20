@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "exp3/delete-silence",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "072a6ec29aa23a11d842b20d741ee49aa460d2c1",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": "timeout",
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "deleted",
+  "archived_as": null,
+  "deleted_at": "2026-10-20T08:44:27Z",
+  "notes": "Deleted at 072a6ec29aa23a11d842b20d741ee49aa460d2c1. Restore: git push origin 072a6ec29aa23a11d842b20d741ee49aa460d2c1:refs/heads/exp3/delete-silence"
+}
