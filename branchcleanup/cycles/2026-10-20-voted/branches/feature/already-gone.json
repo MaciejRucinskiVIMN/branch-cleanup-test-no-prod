@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "feature/already-gone",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "0000000000000000000000000000000000000001",
+  "last_commit_at": "2026-02-20T11:37:45Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": "Fixture: branch does not exist, expect skipped (already gone)"
+}
