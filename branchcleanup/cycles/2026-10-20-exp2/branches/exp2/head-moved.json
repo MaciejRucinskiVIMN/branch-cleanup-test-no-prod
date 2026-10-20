@@ -12,8 +12,8 @@
   "decision_source": "slack",
   "decided_at": "2026-10-15T10:00:00Z",
   "decided_by": null,
-  "outcome": "pending",
+  "outcome": "skipped",
   "archived_as": null,
   "deleted_at": null,
-  "notes": "Vote: delete (via Slack)"
+  "notes": "Branch head moved since the scan (24120a97be02a2b0eb3c9c2abed7df0172ab6a57 -> 23a7c2e12c89956d77b73bb3c981bb1abf75d52a); not deleted."
 }

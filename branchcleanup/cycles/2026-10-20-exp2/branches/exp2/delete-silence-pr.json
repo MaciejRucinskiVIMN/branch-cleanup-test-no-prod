@@ -18,11 +18,11 @@
     "closed_at": null
   },
   "decision": "delete",
-  "decision_source": null,
+  "decision_source": "timeout",
   "decided_at": null,
   "decided_by": null,
-  "outcome": "pending",
+  "outcome": "deleted",
   "archived_as": null,
-  "deleted_at": null,
-  "notes": null
+  "deleted_at": "2026-10-20T08:29:25Z",
+  "notes": "Deleted at 4e0db43add99c50a4064e05fdf083ddc3fccc0fc. Restore: git push origin 4e0db43add99c50a4064e05fdf083ddc3fccc0fc:refs/heads/exp2/delete-silence-pr"
 }

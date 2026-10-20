@@ -21,8 +21,8 @@
   "decision_source": "slack",
   "decided_at": "2026-10-15T10:00:00Z",
   "decided_by": null,
-  "outcome": "pending",
-  "archived_as": null,
+  "outcome": "archived",
+  "archived_as": "archive/exp2/keep-with-pr",
   "deleted_at": null,
-  "notes": "Vote: archive/keep (via Slack)"
+  "notes": "Kept by vote; renamed to archive/exp2/keep-with-pr."
 }

@@ -12,8 +12,8 @@
   "decision_source": "slack",
   "decided_at": "2026-10-15T10:00:00Z",
   "decided_by": null,
-  "outcome": "pending",
+  "outcome": "deleted",
   "archived_as": null,
-  "deleted_at": null,
-  "notes": "Vote: delete (via Slack)"
+  "deleted_at": "2026-10-20T08:29:25Z",
+  "notes": "Deleted at e974e58cd70559d0b8e5cb84257add34d4c51300. Restore: git push origin e974e58cd70559d0b8e5cb84257add34d4c51300:refs/heads/exp2/delete-voted"
 }
