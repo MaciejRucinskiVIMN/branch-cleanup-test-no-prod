@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "branch": "exp2/keep-with-pr",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "6c88e9685979b30c8db8e85286ec495f90bafc09",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch",
+    "stale_pr"
+  ],
+  "pull_request": {
+    "number": 5,
+    "title": "exp2 PR",
+    "url": "https://github.com/MaciejRucinskiVIMN/branch-cleanup-test-no-prod/pull/5",
+    "draft": false,
+    "base": "main",
+    "last_activity_at": "2026-10-20T00:00:00Z",
+    "closed_at": null
+  },
+  "decision": "keep",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "archived",
+  "archived_as": "archive/exp2/keep-with-pr",
+  "deleted_at": null,
+  "notes": "Kept by vote; renamed to archive/exp2/keep-with-pr."
+}
