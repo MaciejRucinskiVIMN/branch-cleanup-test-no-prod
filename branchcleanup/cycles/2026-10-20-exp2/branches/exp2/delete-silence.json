@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "exp2/delete-silence",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "3240d8fe78b75c6c1dc43a22b81e00c18b35641d",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "delete",
+  "decision_source": null,
+  "decided_at": null,
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": null
+}

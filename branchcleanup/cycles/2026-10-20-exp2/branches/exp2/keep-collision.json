@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "branch": "exp2/keep-collision",
+  "creator": "MaciejRucinskiVIMN",
+  "last_commit_sha": "94c3a6193fd4d5bd0a0d20dfc46d68d6a6311b11",
+  "last_commit_at": "2026-10-20T00:00:00Z",
+  "candidate_reasons": [
+    "stale_branch"
+  ],
+  "pull_request": null,
+  "decision": "keep",
+  "decision_source": "slack",
+  "decided_at": "2026-10-15T10:00:00Z",
+  "decided_by": null,
+  "outcome": "pending",
+  "archived_as": null,
+  "deleted_at": null,
+  "notes": "Vote: archive/keep (via Slack)"
+}
