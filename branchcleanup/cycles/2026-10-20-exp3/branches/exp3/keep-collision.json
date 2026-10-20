@@ -12,8 +12,8 @@
   "decision_source": "slack",
   "decided_at": "2026-10-15T10:00:00Z",
   "decided_by": null,
-  "outcome": "pending",
+  "outcome": "skipped",
   "archived_as": null,
   "deleted_at": null,
-  "notes": "Vote: archive/keep (via Slack)"
+  "notes": "archive/exp3/keep-collision already exists in MaciejRucinskiVIMN/branch-cleanup-test-no-prod; branch not renamed."
 }

@@ -2,11 +2,11 @@
   "schema_version": 1,
   "cycle_id": "2026-10-20-exp3",
   "repo": "MaciejRucinskiVIMN/branch-cleanup-test-no-prod",
-  "state": "voting",
+  "state": "finalized",
   "dry_run": false,
   "opened_at": "2026-10-13T08:00:00Z",
   "voting_closes_at": "2026-10-20T08:00:00Z",
-  "finalized_at": null,
+  "finalized_at": "2026-10-20T08:44:27Z",
   "criteria": {
     "branch_stale_after_days": 1,
     "pr_stale_after_days": 1,

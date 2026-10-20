@@ -12,8 +12,8 @@
   "decision_source": "slack",
   "decided_at": "2026-10-15T10:00:00Z",
   "decided_by": null,
-  "outcome": "pending",
+  "outcome": "skipped",
   "archived_as": null,
   "deleted_at": null,
-  "notes": "Vote: delete (via Slack)"
+  "notes": "Branch no longer exists in MaciejRucinskiVIMN/branch-cleanup-test-no-prod; nothing to delete."
 }
